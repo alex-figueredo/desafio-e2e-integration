@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', (fullName,email, password,confirmPassword, terms) => {   
+Cypress.Commands.add('cadastro', (fullName,email, password,confirmPassword, terms) => {   
 
 cy.get('.align-items-center > .bbox-button').click()
 
@@ -36,32 +36,15 @@ cy.get('button.bbox-button.margin-top-big.bg-blue-base').click()
 })
 
 
-Cypress.Commands.add('basicInfo', (pais,estado,cidade,genero,profissao,indicacao,tempoDeExperiencia,telefone) => {   
-    cy.get('#select-country').select(pais)
-    cy.get(':nth-child(6) > .select-wrapper > #select-undefined').select(estado)
-    // cy.get(':nth-child(7) > .select-wrapper > #select-undefined').click()
-    cy.get(':nth-child(7) > .select-wrapper > #select-undefined').select(cidade)
-    // cy.get('#select-gender').type(genero)
-    // cy.get('#select-role').type(profissao)
-    // cy.get('#select-utmSource').type(indicacao)
-    // cy.get('#select-experienceTimeWithProducts').type(tempoDeExperiencia)
-    // cy.get('#input-phone').type(telefone)
+Cypress.Commands.add('login', (email, password) => {   
+    cy.get('#input-email').type(email)
+    cy.get('#input-password').type(password)
 })
+
+
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
   // failing the test
     return false
-    })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+})

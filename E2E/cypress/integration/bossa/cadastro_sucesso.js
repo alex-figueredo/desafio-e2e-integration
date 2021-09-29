@@ -1,19 +1,20 @@
 /// <reference types="cypress" />
 
-context('Casos de erro', () => {
+context('Casos de Sucesso', () => {
   beforeEach(() => {
-    cy.visit('https://dev.app.bossabox.com/login')
+    cy.visit('/')
     
   })
-
-
-
-  it('Email ', () => {
-
-    cy.login("Test Bossa","test"+new Date().getTime()+"@test.com","Va654321","Va654321",true)
-    cy.basicInfo(" Afghanistan ","Acre","Rio Branco","Masculino","DevOps","Redes sociais da BossaBox","Acima de 10 anos","(11) 11111-1111")
-    
+  
+  it('Cadastro com sucesso ', () => {
+    const EMAIL = "test"+new Date().getTime()+"@test.com"
+    const SENHA = "Va654321"
+    cy.cadastro("Test Bossa",EMAIL,SENHA,"Va654321",true)
     cy.get('button.bbox-button.margin-top-big.bg-blue-base').click()
+    cy.get('.padding-left-tiny').click()
+    cy.login(EMAIL,SENHA)
+    cy.get('.margin-vertical-big').click()
+    cy.get('.font-size-huge').should('have.text', '\n\t\t\tOlá, Test\n\t\t')
   })
   
 })

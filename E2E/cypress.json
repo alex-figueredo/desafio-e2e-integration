@@ -1,1 +1,6 @@
-{}
+{
+    "baseUrl": "https://dev.app.bossabox.com",
+    "defaultCommandTimeout": 10000,
+    "requestTimeout":10000
+  }
+  
